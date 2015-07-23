@@ -1,2 +1,8 @@
 /doc/_cache/*
 /doc/_site/*
+/build/
+/node_modules/
+.classpath
+.settings/
+.project
+.tern-project

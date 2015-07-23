@@ -38,7 +38,7 @@ function EgCtrl(plotLib, $http, $scope, $location) {
   };
 
   $scope.loadStockData = function() {
-    $http.get('/data/stocks/' + $scope.dset + '.csv').
+    $http.get('data/stocks/' + $scope.dset + '.csv').
       success(function(data) {
         $scope.datavalues = data;
       });
@@ -49,7 +49,7 @@ function EgCtrl(plotLib, $http, $scope, $location) {
   };
 
   $scope.$watch('$location.hash', function() {
-    var url = "http://" + location.host + "/eg/" +
+    var url = "eg/" +
       location.hash.slice(2) + ".html";
     $http.get(url).success(function(res) {
       res = res.replace(/<h3>(.|\n)*<\/h3>\n\n/m, "");
@@ -172,7 +172,7 @@ var eggrps = [ { title: "Plot types",
                          ["Beat's date problem",   85]] } ];
 
 
-angular.module('myApp', ['radian']).
+angular.module('myApp', ['radian', 'ngRoute']).
   config(['$routeProvider', function($routeProvider) {
     for (var eg = 1; eg <= negs; ++eg) {
       var n = (eg < 10 ? '0' : '') + eg;
